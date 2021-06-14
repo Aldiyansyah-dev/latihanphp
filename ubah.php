@@ -43,7 +43,7 @@ if (!isset($_SESSION['login'])) {
   </head>
   <body>
     <h3>Form Ubah Mahasiswa</h3>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $mhs['id']; ?>">
       <ul>
         <li>
@@ -71,15 +71,18 @@ if (!isset($_SESSION['login'])) {
           </label>
         </li>
         <li>
+        <input type="hidden" name="gambar_lama" value="<?= $mhs['gambar']; ?>">
           <label>
             Gambar
-            <input type="text" name="gambar" required value="<?= $mhs['gambar']; ?>">
+            <input type="file" name="gambar" class="gambar" onchange="previewImage()">
           </label>
         </li>
+        <img src="image/<?= $mhs['gambar']; ?>" width="100" style="display: block;" class="img-preview">
         <li>
           <button type="submit" name="ubah">Ubah Data</button>
         </li>
       </ul>
     </form>
+    <script src="js/script.js"></script>
   </body>
 </html>
